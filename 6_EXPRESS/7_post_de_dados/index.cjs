@@ -8,7 +8,7 @@ const basePath = path.join(__dirname, 'templates'); //__dirname é o caminho do 
 
 //ler o body da requisição
 app.use(express.urlencoded({
-    extented: true
+    extended: true
 }))
 
 app.use(express.json());

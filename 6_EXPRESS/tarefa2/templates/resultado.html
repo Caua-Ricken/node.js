@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado</title>
+</head>
+<body>
+
+    <h1>Resultado</h1>
+    <p>O resultado da soma é: <span id="valor"></span></p>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const resultado = params.get('resultado');
+        document.getElementById('valor').textContent = resultado;
+
+    </script>
+    
+</body>
+</html>

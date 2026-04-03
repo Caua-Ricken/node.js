@@ -3,16 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/resultado.css">
     <title>Resultado</title>
 </head>
 <body>
 
-    <h1>Resultado</h1>
-    <p>O resultado da soma é: <span id="valor"></span></p>
+     <div class="container">
+        <h1>Resultado</h1>
+
+        <p>O resultado da soma é:</p>
+        <span id="valor"></span>
+
+        <a href="/web" class="btn">Voltar</a>
+    </div>
 
     <script>
         const params = new URLSearchParams(window.location.search);
-        const resultado = params.get('resultado');
+        const resultado = params.get('value');
         document.getElementById('valor').textContent = resultado;
 
     </script>

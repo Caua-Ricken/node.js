@@ -1,0 +1,10 @@
+ <h1>olá, handlebars</h1>
+ {{#if aproved}}
+ <p>O usuario está aprovado</p>
+ {{else}}
+ <p>O usuario não está aprovado</p>
+ {{/if}}
+ <p>O nome do usuario é {{usuario.name}} e o sobrenome é {{usuario.surname}}</p>
+ {{#if auth}}
+        <p>O usuario está autenticado, <a href="/dashboard">Acessar dashboard</a></p>
+ {{/if}}       

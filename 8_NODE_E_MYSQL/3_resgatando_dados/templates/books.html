@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livros</title>
+</head>
+<body>
+    <h1>Livros</h1>
+
+    <ul id="lista"></ul>
+
+    
+    <a href="/" class="btn">Voltar</a>
+
+     <script>
+        const request = async () => {
+            const res = await fetch('/book')
+            const data = await res.json()
+
+            const lista = document.getElementById('lista');
+
+            data.forEach(iten => {
+                const li = document.createElement('li');
+                li.textContent = `${iten.id} - ${iten.title} - ${iten.pageqtd} páginas`;
+                lista.appendChild(li);
+            });
+        }
+        request()
+     </script>
+</body>
+</html>

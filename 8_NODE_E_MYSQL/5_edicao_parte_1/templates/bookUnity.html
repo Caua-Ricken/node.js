@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/bookUnity.css">
+    <title>Livros</title>
+</head>
+<body>
+    <h1>Detalhes do Livro</h1>
+
+    <div id="book"></div>
+
+
+    <a id="editLink"></a>
+    
+    <a href="/view" class="btn">Voltar</a>
+
+     <script>
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id')
+
+        const books = async () => {
+            const res = await fetch(`/book/${id}`)
+            const data = await res.json()
+
+            const div = document.getElementById('book');
+
+            div.innerHTML = `
+             <h2>${data.title}</h2>
+             <p>${data.pageqtd} páginas</p>
+            `;
+
+            document.getElementById('editLink').href = `/edit/${id}`;
+document.getElementById('editLink').textContent = 'Editar livro';
+        }
+        books()
+     </script>
+</body>
+</html>

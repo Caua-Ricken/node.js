@@ -1,0 +1,81 @@
+/* Importando uma fonte moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 30px;
+}
+
+/* Removendo estilos padrão da lista */
+#lista {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+    max-width: 600px; /* Largura máxima da lista */
+}
+
+/* Estilizando cada item (li) como um card horizontal */
+#lista li {
+    background: #ffffff;
+    margin-bottom: 12px;
+    padding: 16px 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between; /* Título de um lado, link do outro */
+    align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e8f0;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+#lista li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* Estilo do link "Ver detalhes" dentro da lista */
+#lista li a {
+    text-decoration: none;
+    color: #4f46e5;
+    font-weight: 600;
+    font-size: 0.9rem;
+    background: #f0f0ff;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+#lista li a:hover {
+    background: #e0e0ff;
+    color: #4338ca;
+}
+
+/* Botão Voltar no rodapé */
+.btn {
+    margin-top: 20px;
+    text-decoration: none;
+    color: #64748b;
+    font-weight: 500;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    border-radius: 8px;
+    transition: all 0.2s;
+}
+
+.btn:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+}

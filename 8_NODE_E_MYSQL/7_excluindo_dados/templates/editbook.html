@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/editbook.css">
+    <title>Edição do Livro</title>
+</head>
+<body>
+    
+      <h1>Edite o seu livro</h1>
+
+    <form action="/book/update" method="POST" class="form">
+        <input type="hidden" name="id" id="id">
+        <div class="form-control">
+            <label for="title">Título:</label>
+            <input type="text" name="title" placeholder="digite o titulo" id="title">
+        </div>
+
+         <div class="form-control">
+            <label for="pages">Numero de paginas:</label>
+            <input type="number" name="pages" placeholder="digite o numero de paginas" id="pages">
+        </div>
+        <input type="submit" value="Editar">
+    </form>
+    
+    <script>
+
+         const urlParams = new URLSearchParams(window.location.search);
+            const id = window.location.pathname.split('/').pop();
+
+            const editForm = async () => {
+                try {
+                    const res = await fetch(`/book/edit/${id}`)
+                    const data = await res.json()
+
+                    document.getElementById('title').value = data.title;
+                    document.getElementById('pages').value = data.pageqtd;
+                    document.getElementById('id').value = data.id;
+                } catch (error) {
+                    console.error(error)
+                }
+            }
+            editForm();
+    </script>
+</body>
+</html>

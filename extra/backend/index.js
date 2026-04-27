@@ -1,33 +1,19 @@
 const express = require('express')
 const cors = require('cors')
-
+const pool = require('./db/conn')
 const app = express()
+
+const rotas = require('./routes/api');
 
 app.use(cors())
 app.use(express.json())
 
-// "banco fake"
-let usuarios = []
+app.use('/', rotas);
 
-// GET - listar usuários
-app.get('/usuarios', (req, res) => {
-  res.json(usuarios)
-})
-
-// POST - criar usuário
-app.post('/usuarios', (req, res) => {
-  const { nome } = req.body
-
-  const novoUsuario = {
-    id: Date.now(),
-    nome
-  }
-
-  usuarios.push(novoUsuario)
-
-  res.json(novoUsuario)
-})
-
-app.listen(3000, () => {
-  console.log('Servidor rodando em http://localhost:3000')
+app.listen(3000, (err) => {
+    if (err) {
+      console.log('Erro ao iniciar o servidor:',  err);
+      return;
+    }
+    console.log('Servidor rodando na porta 3000');
 })

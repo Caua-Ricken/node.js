@@ -1,16 +1,10 @@
 /* eslint-disable react-hooks/set-state-in-effect */
 import { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom";
 
 function App() {
-  const [usuarios, setUsuarios] = useState([])
   const [nome, setNome] = useState("")
-
-  // buscar usuários
-  const buscarUsuarios = async () => {
-    const res = await fetch("http://localhost:3000/usuarios")
-    const data = await res.json()
-    setUsuarios(data)
-  }
+  const navigate = useNavigate()
 
   // criar usuário
   const criarUsuario = async (e) => {
@@ -25,12 +19,8 @@ function App() {
     })
 
     setNome("")
-    buscarUsuarios()
+    navigate('/usuarios')
   }
-
-  useEffect(() => {
-    buscarUsuarios()
-  }, [])
 
   return (
     <div style={{ padding: "20px" }}>
@@ -44,12 +34,6 @@ function App() {
         />
         <button type="submit">Adicionar</button>
       </form>
-
-      <ul>
-        {usuarios.map((user) => (
-          <li key={user.id}>{user.nome}</li>
-        ))}
-      </ul>
     </div>
   )
 }

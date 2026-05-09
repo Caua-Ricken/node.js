@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/userview.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários</title>
+</head>
+<body>
+    <h1>Ver usuários</h1>
+
+    <div id="user-info">
+        <p id="user-name"></p>
+        <p id="user-occupation"></p>
+        <p id="user-newsletter"></p>
+    </div>
+
+    <a href="/">Voltar a Home</a>
+    
+    <script>
+        const userId = window.location.pathname.split('/').pop();
+
+        const userInfo = async () => {
+            const res = await fetch(`/user/users/${userId}`);
+            const data = await res.json();
+
+            document.getElementById('user-name').innerText = `Nome: ${data.name}`;
+            document.getElementById('user-occupation').innerText = `Ocupação: ${data.occupation}`;
+            document.getElementById('user-newsletter').innerText = `Newsletter: ${data.newsletter}`;
+        }
+
+        userInfo();
+    </script>
+</body>
+</html>

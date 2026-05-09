@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Home</title>
+</head>
+<body>
+    <h1>Olá sequelize</h1>
+
+    <div id="users"></div>
+    
+    <a href="/adduser">Adicionar usuário</a>
+
+    <script>
+        const buscarUsers = async () => {
+                const res = await fetch('/user/users');
+                const data = await res.json();
+                const usersDiv = document.getElementById('users');
+                data.map(user => (
+                    usersDiv.innerHTML += `<p>Nome: ${user.name} - Ocupação: ${user.occupation} - Newsletter: ${user.newsletter}</p> 
+                <a href="/userview/${user.id}">Ver detalhes</a> <form action="/user/users/delete/${user.id}" method="POST" id="form-${user.id}"><input type="submit" value="Remover"></form> <a href="/edituser/${user.id}">Editar</a><br>`
+                ))
+
+                data.map(user => {
+                    document.getElementById(`form-${user.id}`).addEventListener('submit', function (e) {
+                        const confirmado = confirm('Tem certeza que deseja deletar este usuário?');
+                        if (!confirmado) {
+                            e.preventDefault();
+                        }
+                    });
+                })
+
+            }
+            buscarUsers();
+    </script>
+
+</body>
+</html>

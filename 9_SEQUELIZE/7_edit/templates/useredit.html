@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/useredit.css">
+    <title>Editar usuário</title>
+</head>
+<body>
+    <h1>Editar usuário</h1>
+
+    <form action='/user/users/update/${id}' method='POST'>
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="occupation">Ocupação:</label>
+        <input type="text" id="occupation" name="occupation"><br><br>
+
+        <input type="checkbox" id="newsletter" name="newsletter" checked>
+        <label for="newsletter">Inscrever-se na newsletter:</label>
+        
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <a href="/">Voltar</a>
+
+
+    <script>
+        const id = window.location.pathname.split('/').pop();
+
+        const fetchUser = async () => {
+            const res = await fetch(`/user/users/edit/${id}`);
+            const data = await res.json();
+
+            document.getElementById('name').value = data.name;
+            document.getElementById('occupation').value = data.occupation;
+            if (data.newsletter) {
+                document.getElementById('newsletter').checked = true;
+            } else {
+                document.getElementById('newsletter').checked = false;
+            }
+        }
+
+        fetchUser();
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/adduser.css">
+    <title>Adicionar usuário</title>
+</head>
+<body>
+
+    <h1>Adicionar usuário</h1>
+
+    <form action="/user/insert" method="POST">
+        <div>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" placeholder="Digite o nome do usuário">
+        </div>
+        <div>
+            <label for="occupation">Ocupação:</label>
+            <input type="text" id="occupation" name="occupation" placeholder="Digite a ocupação do usuário">
+        </div>
+          <div>
+            <input type="checkbox" id="newsletter" name="newsletter" checked>
+            <label for="newsletter">Inscrever-se na newsletter:</label>
+        </div>
+
+        <input type="submit" value="Adicionar usuário">
+    </form>
+    
+</body>
+</html>

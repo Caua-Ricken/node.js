@@ -1,0 +1,103 @@
+/* Configurações Gerais */
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    color: #2c3e50;
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+/* Container de Usuários */
+#users {
+    width: 100%;
+    max-width: 800px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+/* Estilização de cada "Linha" de Usuário */
+#users p {
+    background: #fff;
+    margin: 0;
+    padding: 20px;
+    border-radius: 8px 8px 0 0; /* Arredonda apenas o topo */
+    border-left: 5px solid #3498db;
+    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Container de Ações (Links e Botão) */
+/* Como o seu JS joga tudo solto, vamos estilizar os links e forms que vêm logo após o P */
+#users a, 
+#users form {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    margin-bottom: 20px;
+}
+
+/* Estilo dos Links (Ver detalhes e Editar) */
+#users a {
+    text-decoration: none;
+    color: #3498db;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.2s;
+}
+
+#users a:hover {
+    color: #1a5276;
+}
+
+/* Botão Remover */
+input[type="submit"] {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    transition: background 0.2s;
+}
+
+input[type="submit"]:hover {
+    background-color: #c0392b;
+}
+
+/* Botão Adicionar Usuário (O link principal lá embaixo) */
+body > a[href="/adduser"] {
+    display: inline-block;
+    margin-top: 30px;
+    background-color: #2ecc71;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    box-shadow: 0 4px 15px rgba(46, 204, 113, 0.3);
+    transition: transform 0.2s, background 0.2s;
+}
+
+body > a[href="/adduser"]:hover {
+    background-color: #27ae60;
+    transform: translateY(-2px);
+}
+
+/* Ajuste fino para o <br> que você tem no JS */
+br {
+    display: none; /* Escondemos o BR para controlar o espaçamento via CSS */
+}

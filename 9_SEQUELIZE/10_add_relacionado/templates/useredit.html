@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/useredit.css">
+    <title>Editar usuário</title>
+</head>
+<body>
+    <h1>Editar usuário</h1>
+
+    <div class="main-container">
+    <form action='/user/users/update' method='POST' id="editform">
+        <input type="hidden" name="id" id="id">
+        
+        <label for="name">Nome:</label>
+        <input type="text" id="name" name="name"><br><br>
+
+        <label for="occupation">Ocupação:</label>
+        <input type="text" id="occupation" name="occupation"><br><br>
+
+        <input type="checkbox" id="newsletter" name="newsletter" checked>
+        <label for="newsletter">Inscrever-se na newsletter:</label>
+        
+        <button type="submit">Salvar</button>
+    </form>
+
+    <div>
+        <h2>Endereços</h2>
+        <form action="/user/address/create" method="POST">
+            <input type="hidden" name="UserId" id="userId">
+
+            <label for="street">Rua:</label>
+            <input type="text" id="street" name="street"><br><br>
+
+            <label for="number">Número:</label>
+            <input type="text" id="number" name="number"><br><br>
+
+            <label for="city">Cidade:</label>
+            <input type="text" id="city" name="city"><br><br>
+
+            <button type="submit">Adicionar Endereço</button>
+        </form>
+    </div>
+    </div>
+
+    <a href="/">Voltar</a>
+
+
+    <script>
+        const id = window.location.pathname.split('/').pop();
+
+            const fetchUser = async () => {
+                const res = await fetch(`/user/users/edit/${id}`);
+                const data = await res.json();
+
+                document.getElementById('name').value = data.name;
+                document.getElementById('occupation').value = data.occupation;
+                document.getElementById('userId').value = data.id;
+                document.getElementById('id').value = data.id;
+                if (data.newsletter) {
+                    document.getElementById('newsletter').checked = true;
+                } else {
+                    document.getElementById('newsletter').checked = false;
+                }
+                document.getElementById('editform').addEventListener('submit', function (e) {
+                    const confirmado = confirm('Tem certeza que deseja editar este usuário?');
+                    if (!confirmado) {
+                        e.preventDefault();
+                    }
+                })
+            }
+
+            fetchUser();
+    </script>
+    
+</body>
+</html>

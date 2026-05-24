@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/allTasks.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ver Tarefas</title>
+</head>
+<body>
+    <h1>Ver Tarefas</h1>
+    <div id="tasks"></div>
+
+    <a href="/">Voltar para home</a>
+
+    <script>
+        const buscarTasks = async () => {
+            const res = await fetch('/tasks/all');
+            const data = await res.json();
+
+            const tasksDiv = document.getElementById('tasks');
+            data.forEach(task => {
+                const taskElement = document.createElement('div');
+                taskElement.innerHTML = `<h3>${task.title}</h3><p>${task.description}</p> <a href="/details/${task.id}">Editar</a>`;
+                tasksDiv.appendChild(taskElement);
+            })
+        }
+
+        buscarTasks();
+    </script>
+</body>
+</html>

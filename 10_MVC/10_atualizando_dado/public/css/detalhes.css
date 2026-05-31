@@ -1,0 +1,167 @@
+/* ==========================================================================
+   Reset e Estilos Globais
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4rem 1.5rem;
+}
+
+/* ==========================================================================
+   Título da Página
+   ========================================================================== */
+h1 {
+    font-size: 2rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    letter-spacing: -0.025em;
+    width: 100%;
+    max-width: 600px;
+}
+
+/* ==========================================================================
+   Blocos de Informação (Campos de Dados)
+   ========================================================================== */
+body > p {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+    width: 100%;
+    max-width: 600px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+/* Etiquetas (Titulo: / Descrição:) */
+body > p strong {
+    color: #64748b;
+    font-weight: 600;
+    display: block;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+}
+
+/* Conteúdo dinâmico do banco de dados */
+body > p span {
+    color: #0f172a;
+    font-size: 1.1rem;
+}
+
+/* Tratamento da descrição (quebras de linha automáticas) */
+#task-description {
+    color: #334155;
+    white-space: pre-wrap;
+}
+
+/* ==========================================================================
+   Barra de Ações (Os três botões de ícone lado a lado)
+   ========================================================================== */
+/* Como os links estão soltos no body, usamos seletores sequenciais para grudá-los */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 46px;
+    border-radius: 10px;
+    font-size: 1.25rem;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    margin-right: 0.75rem; /* Espaçamento entre os ícones */
+    margin-top: 1rem;
+    border: 1px solid #cbd5e1;
+}
+
+/* ==========================================================================
+   Estilos de Cores para os Botões
+   ========================================================================== */
+
+/* Botão Voltar (Seta) - Verde */
+.btn-success {
+    background-color: #f0fdf4;
+    color: #16a34a;
+    border-color: #bbf7d0;
+}
+
+.btn-success:hover {
+    background-color: #dcfce7;
+    color: #15803d;
+    border-color: #86efac;
+}
+
+/* Botão de Editar (Lápis) - Azul */
+.btn-primary {
+    background-color: #eff6ff;
+    color: #2563eb;
+    border-color: #bfdbfe;
+}
+
+.btn-primary:hover {
+    background-color: #dbeafe;
+    color: #1d4ed8;
+    border-color: #93c5fd;
+}
+
+/* Botão de Excluir (Lixeira) - Vermelho */
+.btn-danger {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.btn-danger:hover {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    border-color: #fca5a5;
+}
+
+/* Botão de Excluir (Lixeira) - Terceiro botão */
+body > a:nth-of-type(3):hover {
+    background-color: #fc9a9a;
+    color: #dc2626;
+    border-color: #fca5a5;
+}
+
+/* ==========================================================================
+   Link "Voltar para view" (Último elemento)
+   ========================================================================== */
+body > a:last-of-type {
+    display: block;
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+    margin-top: 2rem;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.75rem;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+}
+
+body > a:last-of-type:hover {
+    color: #0f172a;
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}

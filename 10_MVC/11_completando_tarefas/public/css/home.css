@@ -1,0 +1,118 @@
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        h1 {
+            margin-bottom: 24px;
+            font-size: 1.8rem;
+            color: #2c3e50;
+            text-align: center;
+        }
+
+        /* Container do Formulário */
+        form {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        /* Grupos de campos */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #4a5568;
+            font-size: 0.9rem;
+        }
+
+        /* Inputs de Texto e Textarea */
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            background-color: #fff;
+            color: #334155;
+            font-size: 1rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            outline: none;
+        }
+
+        /* Efeito de foco nos inputs */
+        input[type="text"]:focus,
+        textarea:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+        }
+
+        /* Redimensionamento do textarea apenas na vertical */
+        textarea {
+            resize: vertical;
+        }
+
+        /* Estilização do Checkbox */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            margin-bottom: 24px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+            accent-color: #10b981; /* Cor verde moderna para o checkbox ativo */
+            margin-right: 10px;
+        }
+
+        .checkbox-group label {
+            display: inline;
+            margin-bottom: 0;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        /* Botão de Enviar */
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+
+        button[type="submit"]:active {
+            transform: scale(0.98);
+        }

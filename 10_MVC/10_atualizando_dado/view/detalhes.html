@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="/css/detalhes.css">
+    <title>detalhes</title>
+</head>
+<body>
+    <h1>Detalhes da Tarefa</h1>
+    <p><strong>Titulo:</strong> <span id="task-title"></span></p>
+    <p><strong>Descrição:</strong> <span id="task-description"></span></p>
+    <a href="/" class="btn btn-success"><i class="bi bi-arrow-left"></i></a>
+    <a class="btn btn-primary" id="edit-btn"><i class="bi bi-pencil"></i></a>
+    <form id="delete-form" method="POST" style="display:inline;">
+    <button type="submit" class="btn btn-danger">
+        <i class="bi bi-trash"></i>
+    </button>
+</form>
+    <a href="/view">Voltar para view</a>
+
+    <script>
+        const id = window.location.pathname.split('/').pop();
+
+        const buscarTaskDetails = async () => {
+            const res = await fetch(`/tasks/all/${id}`);
+            const data = await res.json();
+            document.getElementById('task-title').textContent = data.title;
+            document.getElementById('task-description').textContent = data.description;
+            document.getElementById('edit-btn').href = `/edit/${id}`;
+            document.getElementById('delete-form').action = `/tasks/remove/${id}`;
+
+            document.getElementById(`delete-form`).addEventListener('submit', function (e) {
+                        const confirmado = confirm('Tem certeza que deseja deletar este usuário?');
+                        if (!confirmado) {
+                            e.preventDefault();
+                        }
+                    });
+        }
+        buscarTaskDetails();
+       
+    </script>
+</body>
+</html>

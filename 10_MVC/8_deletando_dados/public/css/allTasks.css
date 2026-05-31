@@ -1,0 +1,127 @@
+/* ==========================================================================
+   Reset e Configurações Globais
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc; /* Fundo claro moderno */
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1.5rem;
+}
+
+/* ==========================================================================
+   Título Principal
+   ========================================================================== */
+h1 {
+    font-size: 2.25rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    letter-spacing: -0.025em;
+}
+
+/* ==========================================================================
+   Grid de Tarefas (Responsivo)
+   ========================================================================== */
+#tasks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 3rem;
+}
+
+/* ==========================================================================
+   Card de Tarefa Individual
+   ========================================================================== */
+#tasks > div {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02), 0 1px 2px rgba(0, 0, 0, 0.04);
+    
+    /* Flexbox para empurrar o link "Editar" sempre para o rodapé do card */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efeito de hover no card */
+#tasks > div:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+/* Título da Tarefa */
+#tasks h3 {
+    font-size: 1.25rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Descrição da Tarefa */
+#tasks p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    /* Faz com que o texto da descrição ocupe o espaço restante */
+    flex-grow: 1; 
+}
+
+/* ==========================================================================
+   Links e Botões
+   ========================================================================== */
+
+/* Botão "Editar" (dentro do card) */
+#tasks a {
+    display: inline-block;
+    text-align: center;
+    background-color: #0284c7; /* Azul focado em ações/edição */
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+}
+
+#tasks a:hover {
+    background-color: #0369a1;
+}
+
+/* Link "Voltar para view" (no rodapé da página) */
+body > a {
+    display: inline-block;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+}
+
+body > a:hover {
+    color: #0f172a;
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}

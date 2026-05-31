@@ -1,0 +1,158 @@
+/* ==========================================================================
+   Reset e Configurações Globais
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: #f8fafc;
+    color: #1e293b;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1.5rem;
+}
+
+/* ==========================================================================
+   Título
+   ========================================================================== */
+h1 {
+    font-size: 2.25rem;
+    color: #0f172a;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+    text-align: center;
+    letter-spacing: -0.025em;
+}
+
+/* ==========================================================================
+   Grid
+   ========================================================================== */
+#tasks {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1100px;
+    margin-bottom: 3rem;
+}
+
+/* ==========================================================================
+   Card padrão
+   ========================================================================== */
+#tasks > div {
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+
+    box-shadow:
+        0 1px 3px rgba(0, 0, 0, 0.02),
+        0 1px 2px rgba(0, 0, 0, 0.04);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    min-height: 180px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+#tasks > div:hover {
+    transform: translateY(-4px);
+    box-shadow:
+        0 10px 15px -3px rgba(0, 0, 0, 0.05),
+        0 4px 6px -4px rgba(0, 0, 0, 0.05);
+}
+
+/* ==========================================================================
+   Conteúdo
+   ========================================================================== */
+#tasks h3 {
+    font-size: 1.25rem;
+    color: #1e293b;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+#tasks p {
+    font-size: 0.95rem;
+    color: #64748b;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    flex-grow: 1;
+}
+
+/* ==========================================================================
+   Links dos cards
+   ========================================================================== */
+#tasks a {
+    display: inline-block;
+    text-align: center;
+    background-color: #0284c7;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease;
+}
+
+#tasks a:hover {
+    background-color: #0369a1;
+}
+
+/* ==========================================================================
+   Link voltar
+   ========================================================================== */
+body > a {
+    display: inline-block;
+    color: #64748b;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    background-color: #ffffff;
+    transition: all 0.15s ease;
+}
+
+body > a:hover {
+    color: #0f172a;
+    background-color: #f1f5f9;
+    border-color: #cbd5e1;
+}
+
+/* ==========================================================================
+   Status da tarefa
+   ========================================================================== */
+
+/* concluída */
+#tasks > .task-completa {
+    background-color: #d4edda;
+    border-left: 5px solid #16a34a;
+}
+
+/* título/descrição concluída */
+#tasks > .task-completa h3,
+#tasks > .task-completa p {
+    color: #166534;
+    text-decoration: line-through;
+}
+
+/* pendente */
+#tasks > .task-pendente {
+    background-color: #fff7d6;
+    border-left: 5px solid #f59e0b;
+}

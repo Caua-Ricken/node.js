@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/home.css">
+    <title>Inicio</title>
+</head>
+<body>
+    <h1>Bem vindo a pagina inicial</h1>
+
+    <form action="/tasks/create" method="POST">
+        <div>
+            <label for="title">Título:</label><br>
+            <input type="text" id="title" name="title" required>
+        </div>
+
+        <br>
+
+        <div>
+            <label for="description">Descrição:</label><br>
+            <textarea id="description" name="description" rows="4" required></textarea>
+        </div>
+
+        <br>
+
+        <button type="submit">Enviar</button>
+    </form>
+
+    <a href="/view">Ver tarefas</a>
+    
+</body>
+</html>

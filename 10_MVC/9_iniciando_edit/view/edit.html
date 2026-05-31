@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar</title>
+</head>
+<body>
+
+    <h1>Editar Tarefa</h1>
+
+    <form action="/" method="POST">
+        <input type="hidden" id="task-id" name="id">
+
+        <label for="task-title">Título:</label>
+        <input type="text" id="task-title" name="title" required>
+
+        <label for="task-description">Descrição:</label>
+        <textarea id="task-description" name="description" required></textarea>
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <script>
+        const id = window.location.pathname.split('/').pop();
+
+        const buscarTaskEdit = async () => {
+            const res = await fetch(`/tasks/edit/${id}`);
+            const data = await res.json();
+
+            document.getElementById('task-id').value = data.id;
+            document.getElementById('task-title').value = data.title;
+            document.getElementById('task-description').value = data.description;
+        }
+
+        buscarTaskEdit();
+    </script>
+
+</body>
+</html>

@@ -22,6 +22,7 @@ function App() {
     navigate('/usuarios')
   }
 
+
   return (
     <div style={{ padding: "20px" }}>
       <h1>Usuários</h1>

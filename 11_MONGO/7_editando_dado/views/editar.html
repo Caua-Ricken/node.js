@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Produto</title>
+
+  <link rel="stylesheet" href="/css/editar.css">
+</head>
+<body>
+
+  <div class="container">
+    <form class="form" id="formEdit">
+
+      <h1>Editar Produto</h1>
+
+      <input type="hidden" id="id">
+
+      <div class="form-control">
+        <label for="name">Nome:</label>
+        <input type="text" id="name" required>
+      </div>
+
+      <div class="form-control">
+        <label for="image">Imagem:</label>
+        <input type="text" id="image" required>
+      </div>
+
+      <div class="form-control">
+        <label for="price">Preço:</label>
+        <input type="number" id="price" step="0.01" required>
+      </div>
+
+      <div class="form-control">
+        <label for="description">Descrição:</label>
+        <textarea id="description" rows="5" required></textarea>
+      </div>
+
+      <button type="submit">Salvar alterações</button>
+
+    </form>
+  </div>
+
+  <script>
+    const formEdit = document.getElementById("formEdit");
+
+    const idInput = document.getElementById("id");
+    const nameInput = document.getElementById("name");
+    const imageInput = document.getElementById("image");
+    const priceInput = document.getElementById("price");
+    const descriptionInput = document.getElementById("description");
+
+    const id = window.location.pathname.split("/").pop();
+
+    async function buscarProduto() {
+      try {
+        const res = await fetch(`/api/products/${id}`);
+
+        if (!res.ok) {
+          throw new Error("Erro ao buscar produto");
+        }
+
+        const product = await res.json();
+
+        idInput.value = product._id;
+        nameInput.value = product.name;
+        imageInput.value = product.image;
+        priceInput.value = product.price;
+        descriptionInput.value = product.description;
+
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao carregar produto");
+      }
+    }
+
+    formEdit.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const product = {
+        name: nameInput.value,
+        image: imageInput.value,
+        price: priceInput.value,
+        description: descriptionInput.value
+      };
+
+      try {
+        const res = await fetch(`/api/products/edit/${id}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(product)
+        });
+
+        if (!res.ok) {
+          throw new Error("Erro ao atualizar produto");
+        }
+
+        alert("Produto atualizado com sucesso!");
+        window.location.href = "/view-products";
+
+      } catch (error) {
+        console.error(error);
+        alert("Erro ao atualizar produto");
+      }
+    });
+
+    buscarProduto();
+  </script>
+
+</body>
+</html>

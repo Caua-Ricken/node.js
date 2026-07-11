@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produtos</title>
+
+    <link rel="stylesheet" href="/css/produtos.css">
+</head>
+
+<body>
+
+    <h1>Lista de Produtos</h1>
+
+    <div id="products"></div>
+
+    <a href="/">Voltar à página inicial</a>
+
+    <script>
+        const productsDiv = document.getElementById("products");
+
+        const buscarProdutos = async () => {
+            try {
+                const res = await fetch("/api/products");
+                const data = await res.json();
+
+                data.forEach((item) => {
+                    productsDiv.innerHTML += `
+                    <div class="product">
+                        <img src="${item.image}" alt="${item.name}" class="product-image">
+
+                        <h2>${item.name}</h2>
+
+                        <p class="price">
+                            R$ ${Number(item.price).toFixed(2)}
+                        </p>
+
+                        <p class="description">
+                            ${item.description}
+                        </p>
+
+                        <a href="/view-details/${item._id}" class="details-link">Ver detalhes</a>
+                    </div>
+                `;
+                });
+
+            } catch (error) {
+                console.error("Erro ao buscar produtos:", error);
+            }
+        }
+
+        buscarProdutos();
+    </script>
+
+</body>
+
+</html>

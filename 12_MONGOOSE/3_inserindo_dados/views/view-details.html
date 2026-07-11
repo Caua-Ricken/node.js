@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalhes do Produto</title>
+
+    <link rel="stylesheet" href="/css/view-details.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div id="product"></div>
+
+        <a href="/view-products" class="back-button">
+            ← Voltar para produtos
+        </a>
+    </div>
+
+    <script>
+    const productDiv = document.getElementById("product");
+
+    const id = window.location.pathname.split("/").pop();
+
+    const buscarProduto = async () => {
+        try {
+            const res = await fetch(`/api/products/${id}`);
+            const data = await res.json();
+
+            productDiv.innerHTML = `
+                <div class="card">
+                    <img src="${data.image}" alt="${data.name}" class="product-image">
+
+                    <div class="content">
+                        <h1>${data.name}</h1>
+
+                        <p class="price">
+                            R$ ${Number(data.price).toFixed(2)}
+                        </p>
+
+                        <p class="description">
+                            ${data.description}
+                        </p>
+
+                        <div class="actions">
+                            <a href="/edit/${data._id}" class="edit-button">
+                                Editar
+                            </a>
+
+                            <button class="delete-button" onclick="deletarProduto('${data._id}')">
+                                Deletar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } catch (error) {
+            console.error(error);
+            productDiv.innerHTML = "<h2>Produto não encontrado.</h2>";
+        }
+    };
+
+    buscarProduto();
+
+    const deletarProduto = async (id) => {
+        const confirmar = confirm("Deseja realmente deletar este produto?");
+
+        if (!confirmar) return;
+
+        try {
+            const res = await fetch(`/api/products/${id}`, {
+                method: "DELETE"
+            });
+
+            if (!res.ok) {
+                throw new Error("Erro ao deletar produto");
+            }
+
+            alert("Produto deletado com sucesso!");
+
+            window.location.href = "/view-products";
+
+        } catch (error) {
+            console.error(error);
+            alert("Erro ao deletar produto.");
+        }
+    };
+</script>
+
+</body>
+
+</html>
